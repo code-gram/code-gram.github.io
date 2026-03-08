@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Coming Soon</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #4a1fa8 0%, #6b35c9 30%, #7b3ff5 55%, #5b6af0 80%, #4a8af4 100%);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .bg-shapes { position: fixed; inset: 0; pointer-events: none; overflow: hidden; }
+    .shape { position: absolute; opacity: 0.12; }
+    .shape-1 {
+      width: 420px; height: 420px;
+      background: rgba(255,255,255,0.15);
+      clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      animation: rotateSlow 30s linear infinite;
+    }
+    .shape-2 {
+      width: 280px; height: 280px;
+      background: rgba(255,255,255,0.1);
+      clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      animation: rotateSlow 20s linear infinite reverse;
+    }
+    .shape-3 {
+      width: 180px; height: 180px;
+      background: rgba(255,255,255,0.08);
+      clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      animation: rotateSlow 14s linear infinite;
+    }
+    .blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.18; }
+    .blob-1 { width: 500px; height: 500px; background: #9b59f5; top: -150px; left: -150px; }
+    .blob-2 { width: 400px; height: 400px; background: #4a8af4; bottom: -120px; right: -120px; }
+
+    @keyframes rotateSlow {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to   { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    .card {
+      position: relative; z-index: 10;
+      text-align: center; padding: 3rem 2rem;
+      display: flex; flex-direction: column;
+      align-items: center; gap: 1.4rem;
+      animation: fadeIn 1s ease forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 7vw, 4.2rem);
+      font-weight: 800; color: #fff;
+      text-shadow: 0 4px 24px rgba(0,0,0,0.2);
+    }
+    .tagline {
+      font-size: 0.75rem; letter-spacing: 0.35em;
+      text-transform: uppercase; color: rgba(255,255,255,0.65);
+      margin-top: -0.6rem;
+    }
+
+    .countdown-wrapper {
+      background: #fff; border-radius: 4px;
+      padding: 2.2rem 3rem;
+      display: flex; align-items: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+      margin: 0.5rem 0;
+    }
+    .time-block {
+      display: flex; flex-direction: column;
+      align-items: center; padding: 0 2.2rem;
+    }
+    .time-block:not(:last-child) { border-right: 1.5px solid #e8e8f0; }
+    .time-num {
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      font-weight: 800; color: #1a1a2e;
+      line-height: 1; min-width: 2ch; text-align: center;
+    }
+    .time-label {
+      font-size: 0.65rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #999;
+      font-weight: 500; margin-top: 0.5rem;
+    }
+
+    .subscribe-btn {
+      display: inline-flex; align-items: center;
+      gap: 0.9rem;
+      background: rgba(255,255,255,0.15);
+      border: 1.5px solid rgba(255,255,255,0.35);
+      border-radius: 50px;
+      padding: 0.85rem 2.2rem 0.85rem 0.85rem;
+      color: #fff; text-decoration: none;
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      backdrop-filter: blur(10px);
+      transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+      margin-top: 0.5rem;
+    }
+    .subscribe-btn:hover {
+      background: rgba(255,255,255,0.28);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 36px rgba(0,0,0,0.2);
+    }
+    .btn-icon {
+      width: 42px; height: 42px;
+      background: rgba(255,255,255,0.25);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .btn-icon svg { width: 18px; height: 18px; fill: #fff; }
+
+    @media (max-width: 520px) {
+      .countdown-wrapper { padding: 1.6rem 1rem; }
+      .time-block { padding: 0 1.1rem; }
+      .time-num { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-shapes">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+  </div>
+
+  <div class="card">
+    <h1>Coming Soon!</h1>
+    <p class="tagline">Stay Tuned</p>
+
+    <div class="countdown-wrapper">
+      <div class="time-block"><span class="time-num" id="days">00</span><span class="time-label">Days</span></div>
+      <div class="time-block"><span class="time-num" id="hours">00</span><span class="time-label">Hours</span></div>
+      <div class="time-block"><span class="time-num" id="mins">00</span><span class="time-label">Mins</span></div>
+      <div class="time-block"><span class="time-num" id="secs">00</span><span class="time-label">Secs</span></div>
+    </div>
+
+    <a class="subscribe-btn" href="https://www.youtube.com/@code-gram" target="_blank" rel="noopener">
+      <span class="btn-icon">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      </span>
+      Subscribe Now
+    </a>
+  </div>
+
+  <script>
+    const launch = new Date();
+    launch.setDate(launch.getDate() + 30);
+
+    function pad(n) { return String(n).padStart(2, '0'); }
+
+    function tick() {
+      let diff = Math.max(0, launch - new Date());
+      const days  = Math.floor(diff / 86400000); diff %= 86400000;
+      const hours = Math.floor(diff / 3600000);  diff %= 3600000;
+      const mins  = Math.floor(diff / 60000);    diff %= 60000;
+      const secs  = Math.floor(diff / 1000);
+      document.getElementById('days').textContent  = pad(days);
+      document.getElementById('hours').textContent = pad(hours);
+      document.getElementById('mins').textContent  = pad(mins);
+      document.getElementById('secs').textContent  = pad(secs);
+    }
+
+    tick();
+    setInterval(tick, 1000);
+  </script>
+</body>
+</html>
